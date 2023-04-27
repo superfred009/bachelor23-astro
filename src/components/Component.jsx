@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import HandleListe from './HandleListe';
+import React, { useState, useEffect } from "react";
+import HandleListe from "./HandleListe";
 
 const Component = () => {
   const [products, setProducts] = useState([]);
@@ -31,7 +31,7 @@ const Component = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('https://dummyjson.com/products');
+      const response = await fetch("https://dummyjson.com/products");
       const data = await response.json();
       setProducts(data.products);
       setLoaded(true);
@@ -61,7 +61,7 @@ const Component = () => {
             </button>
             <div>
               {product.images.map((image) => (
-                <img src={image} alt={image} loading="lazy" />
+                <img src={image} alt={image} />
               ))}
             </div>
           </div>
