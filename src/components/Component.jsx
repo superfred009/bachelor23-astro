@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import HandleListe from "./HandleListe";
+import React, { useState } from 'react';
+import HeaderWithCart from './HeaderWithCart';
 
-const Component = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoaded, setLoaded] = useState(false);
+const Component = ({ products }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   const addToCart = (product) => {
@@ -29,29 +27,21 @@ const Component = () => {
     }
   };
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("https://dummyjson.com/products");
-      const data = await response.json();
-      setProducts(data.products);
-      setLoaded(true);
-    }
-    fetchData();
-  }, []);
+  const numberOfProducts = selectedProducts.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
   return (
     <div>
-      <div className="App">
-        <HandleListe selectedProducts={selectedProducts} />
-      </div>
+      <HeaderWithCart
+        selectedProducts={selectedProducts}
+        numberOfProducts={numberOfProducts}
+      />
       {products.map((product) => (
-        <div key={product.id} className="card col-6">
-          <div className="card-body">
+        <div key={product.id} className="card">
+          <div className="card-items">
             <h5 className="card-title">{product.title}</h5>
-            <p className="card-text">{product.description}</p>
             <button
               onClick={() => {
                 addToCart(product);
@@ -59,11 +49,18 @@ const Component = () => {
             >
               Add to cart
             </button>
-            <div>
-              {product.images.map((image) => (
-                <img src={image} alt={image} />
-              ))}
-            </div>
+          </div>
+          <p className="card-text">{product.description}</p>
+          <div>
+            {product.images.map((image) => (
+              <img
+                src={image}
+                alt={image}
+                height={500}
+                width={500}
+                loading="lazy"
+              />
+            ))}
           </div>
         </div>
       ))}

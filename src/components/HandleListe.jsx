@@ -8,13 +8,13 @@ const HandleListe = ({ selectedProducts = [] }) => {
   };
 
   const handleBuyCart = () => {
-    alert('Kjøp handleliste for', name);
+    alert(`Handleliste kjøpt for ${name}`);
   };
 
   const emptyCart = selectedProducts.length === 0;
 
   return (
-    <div>
+    <div className='Header_container'>
       <h2>Handleliste</h2>
       <input
         type="text"
@@ -33,7 +33,7 @@ const HandleListe = ({ selectedProducts = [] }) => {
         ))}
       </ul>
       <button onClick={handleBuyCart} disabled={emptyCart}>
-        Kjøp handleliste
+        Kjøp handleliste for {name}
       </button>
     </div>
   );
