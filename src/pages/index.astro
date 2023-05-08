@@ -3,13 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import Component from '../components/Component';
 import '../styles/global.css';
 
-const res = await fetch('https://dummyjson.com/products');
-const data = await res.json();
-const products = data.products;
+const res1 = await fetch('https://dummyjson.com/products');
+const data1 = await res1.json();
+const products1 = data1.products;
+
+const res2 = await fetch('https://dummyjson.com/products');
+const data2 = await res2.json();
+const products2 = data2.products;
+
+const combinedProducts = [...products1, ...products2];
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<Component products={products} client:load />
-	</main>
+  <main>
+    <Component products={combinedProducts} client:load />
+  </main>
 </Layout>
