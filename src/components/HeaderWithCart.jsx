@@ -11,7 +11,7 @@ const HeaderWithCart = ({ numberOfProducts, selectedProducts }) => {
   return (
     <header className="header-container">
       <div className="header">
-        <h1>Products</h1>
+        <h1 onClick={() => window.scroll(0, 0)}>Products</h1>
         <button onClick={toggleCart}>
           Handlekurv {numberOfProducts > 0 && `(${numberOfProducts})`}
         </button>

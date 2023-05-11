@@ -97,3 +97,10 @@ button:active {
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);
 }
+button:disabled,
+button:disabled:hover {
+  background-color: grey;
+  color: lightgray;
+  cursor: not-allowed;
+  transform: none;
+}
