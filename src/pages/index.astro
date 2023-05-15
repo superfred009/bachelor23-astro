@@ -2,6 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Component from '../components/Component';
 import '../styles/global.css';
+import { performHeavyLoad } from '../components/heavyLoad';
+
+
+const heavyLoadResult = performHeavyLoad();
 
 const res1 = await fetch('https://dummyjson.com/products');
 const data1 = await res1.json();
@@ -16,6 +20,8 @@ const combinedProducts = [...products1, ...products2];
 
 <Layout title="Welcome to Astro.">
   <main>
+    <p>Heavy load execution time: {heavyLoadResult.executionTime} milliseconds</p>
+    <p>Last prime number found: {heavyLoadResult.primes[heavyLoadResult.primes.length - 1]}</p>
     <Component products={combinedProducts} client:load />
   </main>
 </Layout>
