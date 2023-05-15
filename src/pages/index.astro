@@ -26,7 +26,7 @@ const combinedProducts = [...products1, ...products2];
 
 <Layout title="Welcome to Astro.">
   <main>
-    <p>Heavy load execution time: {heavyLoadResult.executionTime} milliseconds</p>
+    <p>Heavy load v2 execution time: {heavyLoadResult.executionTime} milliseconds</p>
     <p>Last prime number found: {heavyLoadResult.primes[heavyLoadResult.primes.length - 1]}</p>
     <Component products={combinedProducts} client:load />
   </main>
