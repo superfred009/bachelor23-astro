@@ -75,7 +75,7 @@ const Component = () => {
                 alt={image}
                 height={500}
                 width={500}
-                loading="lazy"
+                //loading="lazy"
               />
             ))}
           </div>
