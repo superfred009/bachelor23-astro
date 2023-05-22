@@ -1,25 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import HeaderWithCart from "./HeaderWithCart";
 
-const Component = () => {
+const Component = ({ products }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res1 = await fetch("https://dummyjson.com/products");
-      const data1 = await res1.json();
-      const products1 = data1.products;
-
-      const res2 = await fetch("https://dummyjson.com/products");
-      const data2 = await res2.json();
-      const products2 = data2.products;
-
-      const combinedProducts = [...products1, ...products2];
-      setProducts(combinedProducts);
-    };
-    getData();
-  }, [products]);
 
   const addToCart = (product) => {
     const productExist = selectedProducts.find(

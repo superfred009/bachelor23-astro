@@ -4,20 +4,20 @@ import Component from "../components/Component";
 import "../styles/global.css";
 import PerformHeavyLoad from "../components/heavyLoad";
 
-// const res1 = await fetch('https://dummyjson.com/products');
-// const data1 = await res1.json();
-// const products1 = data1.products;
+const res1 = await fetch('https://dummyjson.com/products');
+const data1 = await res1.json();
+const products1 = data1.products;
 
-// const res2 = await fetch('https://dummyjson.com/products');
-// const data2 = await res2.json();
-// const products2 = data2.products;
+const res2 = await fetch('https://dummyjson.com/products');
+const data2 = await res2.json();
+const products2 = data2.products;
 
-// const combinedProducts = [...products1, ...products2];
+const combinedProducts = [...products1, ...products2];
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <!-- <PerformHeavyLoad client:load /> -->
-    <Component client:load />
+    <PerformHeavyLoad client:load />
+    <Component client:load products={combinedProducts} />
   </main>
 </Layout>
