@@ -17,7 +17,7 @@ const combinedProducts = [...products1, ...products2];
 
 <Layout title="Welcome to Astro.">
   <main>
-    <PerformHeavyLoad client:load />
     <Component client:load products={combinedProducts} />
+    <PerformHeavyLoad client:load />
   </main>
 </Layout>
